@@ -1,0 +1,16 @@
+name = "cruiser-sa"
+main = "worker.js"
+compatibility_date = "2024-01-01"
+
+# Static assets served alongside the worker
+[assets]
+directory = "./"
+binding = "ASSETS"
+
+# To deploy:
+#   npm install -g wrangler
+#   wrangler login
+#   wrangler deploy
+#
+# Live URL: https://cruiser-sa.gerhardcttx.workers.dev/
+# Account:  gerhardcttx (Cloudflare)
