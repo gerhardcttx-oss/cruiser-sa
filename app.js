@@ -296,6 +296,9 @@ async function startTest() {
   }, 300);
 
   testRunning = false;
+
+  // CTTX lead capture — show assessment form after a completed test.
+  if (window.CTTX_onTestComplete) window.CTTX_onTestComplete(lastResults);
 }
 
 function highlightMetric(id) {
