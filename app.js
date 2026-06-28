@@ -181,14 +181,14 @@ function showUpgradeNudge(down, up, ping) {
     if (up < 2) {
       text.innerHTML = '<strong>Jou kameras loop blind.</strong> Upload onder 2 Mbps beteken jou sekuriteitskameras kan nie na die cloud stroom nie. CTTX bring Vodacom-infrastruktuur na die platteland. Besigheidslyne van <strong>R1,600/mo</strong>.';
     } else if (down < 10) {
-      text.innerHTML = '<strong>Hierdie lyn gaan nie die plaas aan die gang hou nie.</strong> Under 10 Mbps means CCTV drops, video calls freeze, cloud backups fail silently. From <strong>R1,600/mo</strong>.';
+  2   text.innerHTML = '<strong>Hierdie lyn gaan nie die plaas aan die gang hou nie.</strong> Under 10 Mbps means CCTV drops, video calls freeze, cloud backups fail silently. From <strong>R1,600/mo</strong>.';
     } else {
       text.innerHTML = '<strong>Jou lyn sukkel meer as \'n bakkie in die sand.</strong> Under 20 Mbps is below the modern minimum. Your neighbours on CTTX are running cameras, cloud, and video calls simultaneously. From <strong>R1,600/mo</strong>.';
     }
     if (cta) { cta.textContent = 'Opgradeer na CTTX →'; cta.classList.add('cta-urgent'); }
   } else if (down < THRESHOLDS.download.acceptable || up < THRESHOLDS.upload.acceptable) {
     nudge.style.display = 'block'; nudge.classList.remove('nudge-urgent');
-    text.innerHTML = 'Your connection works for mow, but it won\'t scale. Add cameras, more staff on video calls, or cloud services and you\'ll hit the wall fast. CTTX dedicated lines from <strong>R1,600/mo</strong>.';
+    text.innerHTML = 'Your connection works for now, but it won\'t scale. Add cameras, more staff on video calls, or cloud services and you\'ll hit the wall fast. CTTX dedicated lines from <strong>R1,600/mo</strong>.';
     if (cta) { cta.textContent = 'Explore CTTX Business Lines →'; cta.classList.remove('cta-urgent'); }
   } else if (down < THRESHOLDS.download.good) {
     nudge.style.display = 'block'; nudge.classList.remove('nudge-urgent');
@@ -312,11 +312,11 @@ function getShareText(mode) {
                   : r.down >= THRESHOLDS.download.acceptable ? 'mid' : 'slow';
 
   if (mode === 'whatsapp') {
-    if (rating === 'fast') return `🏎️ *CRUISER Speed Test — FULL THROTTLE${connLabel}*\n\n⬇ Download: *${r.down.toFixed(1)} Mbps*\n⬆ Upload: *${r.up.toFixed(1)} Mbps*\n📡 Ping: ${r.ping}ms | Jitter: ${r.jitter}ms\n\nLekker hey! My lyn cruise. Kan joune dit klop? 😎\nTest gratis 👇 https://cruiser-sa.netlify.app\n\n#CruiserSpeed #FullThrottle`;
-    if (rating === 'slow') return `🏎️ *CRUISER Speed Test — ROUGH TERRAIN* 😬\n\n⬇ Download: *${r.down.toFixed(1)} Mbps*\n⬆ Upload: *${r.up.toFixed(1)} Mbps*\n📡 Ping: ${r.ping}ms\n\nMy lyn sukkel... is joune ook so stadig? 😅\nTest jou eie → https://cruiser-sa.netlify.app\n\n#CruiserSpeed #UpgradeTime`;
-    return `🏎️ *CRUISER Speed Test${connLabel}*\n\n⬇ Download: *${r.down.toFixed(1)} Mbps*\n⬆ Upload: *${r.up.toFixed(1)} Mbps*\n📡 Ping: ${r.ping}ms | Jitter: ${r.jitter}ms\n\nKan joune klop? Challenge accepted? 🤔\nTest gratis 👇 https://cruiser-sa.netlify.app\n\n#CruiserSpeed`;
+    if (rating === 'fast') return `🏎️ *CRUISER Speed Test — FULL THROTTLE${connLabel}*\n\n⬇ Download: *${r.down.toFixed(1)} Mbps*\n⬆ Upload: *${r.up.toFixed(1)} Mbps*\n📡 Ping: ${r.ping}ms | Jitter: ${r.jitter}ms\n\nLekker hey! My lyn cruise. Kan joune dit klop? 😎\nTest gratis 👇 https://cruiser-sa.gerhardcttx.workers.dev\n\n#CruiserSpeed #FullThrottle`;
+    if (rating === 'slow') return `🏎️ *CRUISER Speed Test — ROUGH TERRAIN* 😬\n\n⬇ Download: *${r.down.toFixed(1)} Mbps*\n⬆ Upload: *${r.up.toFixed(1)} Mbps*\n📡 Ping: ${r.ping}ms\n\nMy lyn sukkel... is joune ook so stadig? 😅\nTest jou eie → https://cruiser-sa.gerhardcttx.workers.dev\n\n#CruiserSpeed #UpgradeTime`;
+    return `🏎️ *CRUISER Speed Test${connLabel}*\n\n⬇ Download: *${r.down.toFixed(1)} Mbps*\n⬆ Upload: *${r.up.toFixed(1)} Mbps*\n📡 Ping: ${r.ping}ms | Jitter: ${r.jitter}ms\n\nKan joune klop? Challenge accepted? 🤔\nTest gratis 👇 https://cruiser-sa.gerhardcttx.workers.dev\n\n#CruiserSpeed`;
   }
-  return `🏎️ CRUISER Speed Test${connLabel}\n────────────────────\n⬇ ${r.down.toFixed(1)} Mbps DOWN\n⬆ ${r.up.toFixed(1)} Mbps UP\n📡 ${r.ping}ms ping · ${r.jitter}ms jitter\n────────────────────\nCan YOUR line beat this?\nTest FREE 👇 https://cruiser-sa.netlify.app\n#CruiserSpeed #SpeedChallenge`;
+  return `🏎️ CRUISER Speed Test${connLabel}\n────────────────────\n⬇ ${r.down.toFixed(1)} Mbps DOWN\n⬆ ${r.up.toFixed(1)} Mbps UP\n📡 ${r.ping}ms ping · ${r.jitter}ms jitter\n────────────────────\nCan YOUR line beat this?\nTest FREE 👇 https://cruiser-sa.gerhardcttx.workers.dev\n#CruiserSpeed #SpeedChallenge`;
 }
 
 function shareWhatsApp() {
@@ -488,7 +488,7 @@ function initInstallPrompt() {
   });
 }
 
-// ── Boot ─────────────────────────────────────────────────────
+// ── Boot ──────────────────────────────────────────────────────
 (function init() {
   initGauges();
   detectConnection();
